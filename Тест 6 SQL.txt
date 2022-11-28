@@ -1,0 +1,48 @@
+1) SELECT * FROM employees AS em INNER JOIN job_history AS jh 
+ ON (em.employee_id = jh.department_id) ;
+2) 
+SELECT C.country_name, R.region_name
+FROM countries AS C INNER JOIN regions AS R ;
+
+SELECT region_name, country_name
+FROM regions NATURAL JOIN countries; правильный ответ
+
+3) SELECT*FROM countries INNER JOIN locations USING (country_id); 
+
+4) SELECT first_name,last_name,new.job_id, previous.job_id FROM employees AS new  
+INNER JOIN job_history AS previous USING (employee_id);
+
+SELECT first_name, last_name, e.job_id AS new, jh.job_id AS previous FROM employees AS e 
+INNER JOIN job_history AS jh ON(e.employee_id = jh.employee_id); правильный ответ
+
+5) SELECT first_name,last_name,country_id FROM employees CROSS JOIN countries;
+
+6) SELECT*FROM employees AS em LEFT JOIN job_history AS jh ON (em.employee_id= jh.employee_id);
+
+7) SELECT*FROM countries INNER JOIN locations USING (country_id ) ;
+
+SELECT * FROM countries AS c LEFT JOIN locations AS l ON(c.country_id = l.country_id)
+UNION
+SELECT * FROM countries AS c RIGHT JOIN locations AS l ON(c.country_id = l.country_id) 
+правельный ответ
+
+8) SELECT first_name, last_name, job_id FROM employees
+WHERE salary > (SELECT MIN(salary) FROM employees WHERE commision IS NOT NULL);
+правельный ответ
+
+9) SELECT * FROM countries INNER JOIN locations USING(country_id)
+WHERE country_id NOT IN ('CA', 'US');
+правельный ответ
+
+10) SELECT l.country_id, COUNT(*) FROM locations AS l INNER JOIN countries AS c ON(l.country_id=c.country_id)
+INNER JOIN regions AS r ON(c.region_id=r.region_id)
+GROUP BY l.country_id
+ORDER BY COUNT(*);
+
+ИЛИ
+
+SELECT locations.country_id, COUNT(*) FROM locations
+INNER JOIN countries AS CON USING (country_id)
+INNER JOIN regions AS REG USING (region_id)
+GROUP BY locations.country_id
+ORDER BY 2;

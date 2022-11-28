@@ -1,0 +1,28 @@
+1) SELECT CONVERT('20210710',DATE);
+2) SELECT*FROM employees
+ WHERE INSTR (LOWER (first_name), 'b')>0;
+3) 
+4)SELECT CONVERT('7.776544', DECIMAL(3,2)) ;
+5) SELECT start_date, first_name,
+CASE
+WHEN start_date >= '2005-00-00' THEN  'ok'
+END
+FROM employees;
+6) SELECT last_name, IFNULL(salary*commision, 'no') AS bonus FROM employees;
+7) SELECT first_name, commision, 
+COALESCE(commision, manager_id,job_id)  FROM employees;
+8)SELECT first_name, salary ,
+CASE 
+WHEN salary < 4500 THEN 'Low Lavel'
+WHEN salary BETWEEN 4500 AND  9000 THEN 'Normal Lavel'
+WHEN salary > 9000 THEN 'High Level'
+END salary_level
+FROM employees ;
+9) SELECT first_name, last_name,
+CASE LENGTH(first_name)+LENGTH(last_name )
+WHEN 10 THEN 'Short'
+WHEN 12 THEN 'Normal'
+WHEN 15 THEN 'Long'
+ELSE 'Unknown'
+END
+FROM employees;

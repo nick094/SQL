@@ -1,0 +1,23 @@
+1) SELECT* FROM employees
+WHERE LENGTH( first_name )>5; 
+2) SELECT*FROM employees
+WHERE MOD (salary,2000)=0;
+3) SELECT TRIM(leading "+7-911-123-45-" FROM "+7-911-123-45-60"); первый вариант
+   SELECT  SUBSTR('+7-911-123-45-60',-2,2 ); второй вариант
+4) SELECT UPPER( last_name), UPPER( first_name) FROM employees
+WHERE LENGTH(last_name)>6
+AND LENGTH(first_name)<6 ;
+5)
+6)  SELECT employee_id, first_name,last_name , end_date, 
+TIMESTAMPDIFF( MONTH, start_date, end_date) FROM employees
+WHERE TIMESTAMPDIFF(MONTH, start_date, end_date) > 50;   
+7) SELECT end_date, REPLACE( end_date , '-','.') FROM employees;
+8) SELECT first_name, UPPER(first_name),LOWER(job_id) FROM employees ; ПЕРВЫЙ ВАРИАНТ
+   SELECT CONCAT(first_name,' ', UPPER(first_name),' ',LOWER(job_id)) FROM employees ; ВТОРОЙ ВАРИАНТ
+9) SELECT CONCAT(first_name,salary) FROM employees ; 
+10) SELECT RPAD(first_name,12,'$'), LPAD(last_name,17,'$') FROM employees ;
+11) SELECT *FROM employees 
+WHERE INSTR( first_name,'a') =1;
+12) SELECT '!!HELLO! HOW ARE YOU?!!!!!!!!', TRIM(both'!' from '!!HELLO! HOW ARE YOU?!!!!!!!!');
+13) SELECT salary*3.1314,ROUND(salary*3.1314),TRUNCATE(salary*3.1314,-0) FROM employees
+14) SELECT start_date, ADDDATE(start_date,INTERVAL 1.5 YEAR),LAST_DAY(start_date) FROM employees;

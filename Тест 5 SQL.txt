@@ -1,0 +1,61 @@
+1)SELECT job_id, MIN(salary),MAX(salary),MIN(start_date),MAX(start_date),COUNT(*) FROM employees
+GROUP BY job_id 
+ORDER BY COUNT(*) DESC ; 
+
+2)SELECT SUBSTR(first_name, 1,1) AS first_char, COUNT(*)
+FROM employees
+GROUP BY first_char
+HAVING COUNT(*) > 1
+ORDER BY 2 DESC; НЕ МОЙ ОТВЕТ
+
+3) SELECT job_id, salary, COUNT(*) FROM employees
+GROUP BY job_id
+
+4) -SELECT DATE_FORMAT(start_date,'%W'),COUNT(*) FROM employees
+GROUP BY start_date ; МОЙ ОТВЕТ
+
+-SELECT date_format(start_date, '%W') AS hire_date, COUNT(*)
+FROM employees
+GROUP BY hire_date; НЕ МОЙ ОТВЕТ
+
+5) SELECT job_id, COUNT(*)>3 , SUM(salary) > 25000 FROM employees ;
+
+-SELECT job_id FROM employees
+GROUP BY job_id
+HAVING COUNT(*) > 3 AND SUM(salary) > 25000; НЕ МОЙ ОТВЕТ
+
+6) SELECT job_id,ROUND(AVG(salary)) FROM employees
+GROUP BY job_id
+
+7)-SELECT last_name, job_id, COUNT(*) FROM employees
+WHERE  LENGTH(last_name)>=6 
+GROUP BY job_id МОЙ ОТВЕТ 
+
+-SELECT last_name, job_id, COUNT(*) FROM employees
+WHERE  LENGTH(last_name)>=6
+GROUP BY job_id НЕ МОЙ ОТВЕТ
+
+8)SELECT job_id,COUNT(*) FROM employees
+GROUP BY job_id
+HAVING COUNT(*)> 1;
+
+SELECT manager_id, COUNT(*) FROM employees
+GROUP BY manager_id
+HAVING COUNT(*) > 1; НЕ МОЙ ОТВЕТ 
+
+9)SELECT manager_id, job_id, MIN(salary),MAX(salary) FROM employees
+WHERE salary > 8000
+GROUP BY job_id, manager_id ;
+
+SELECT manager_id, job_id, MAX(salary), MIN(salary) FROM employees
+GROUP BY manager_id, job_id
+HAVING AVG(salary) > 8000; НЕ МОЙ ОТВЕТ
+
+10) SELECT manager_id FROM employees
+WHERE commision IS NULL
+GROUP BY manager_id
+HAVING AVG(salary) BETWEEN 5000 AND 10000; НЕ  МОЙ ОТВЕТ
+
+11) SELECT ROUND(AVG(salary))
+FROM employees
+GROUP BY job_id;

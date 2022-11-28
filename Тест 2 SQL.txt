@@ -1,0 +1,20 @@
+1)SELECT  first_name, last_name, job_id, salary FROM employees ; вывести инф
+
+2)SELECT employee_id, last_name, end_date, salary -1000 FROM employees ; вывести инф где зп - 1000
+
+3)SELECT CONCAT( first_name ," ", last_name) FROM employees ; вывести фио через пробел в одном столбе
+
+4)SELECT DISTINCT salary AS "Only unique salary"  FROM employees ; уникальные зарплаты и имя столба
+
+5)SELECT employee_id AS "ID", first_name AS "FIRST NAME", last_name AS "LAST NAME" FROM employees ; переименовать столбы
+
+6)SELECT last_name, DATEDIFF(end_date,start_date) FROM employees 
+WHERE last_name = "Walker" 
+
+7)SELECT 24*60 FROM DUAL кол_во минут в сутках
+
+8)SELECT employee_id, first_name,job_id FROM employees 
+WHERE job_id = "AD_SUP"; 
+
+9)CREATE TABLE `names`(employee_name VARCHAR(20), `number`INT , `employee info` VARCHAR(20));
+SELECT * FROM employees WHERE salary < 24000 ORDER BY salary DESC ;
